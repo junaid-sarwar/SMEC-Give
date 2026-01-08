@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Navbar } from '@/components/Navbar';
-// import { Footer } from '@/components/layout/Footer';
+import { Footer } from '@/components/Footer';
 import { HeroSection } from '@/components/HeroSection'; // This is the API-enabled one we just made
 import { EventCard } from '@/components/EventCard';
 import { CategoryFilter } from '@/components/CategoryFilter';
 import { Loader2 } from 'lucide-react'; // Optional: for loading state
+import HeroSection2 from '@/components/HeroSection2';
+import { HeroGSAP } from '@/components/HeroGSAP';
+import SponsorMarquee from '@/components/SponsorMarquee';
+import WhatIsSmec from '@/components/WhatIsSmec';
 
 const Home = () => {
   const [events, setEvents] = useState([]);
@@ -45,7 +49,10 @@ const Home = () => {
       <Navbar />
       
       {/* Hero */}
-      <HeroSection />
+      <HeroSection2 />
+      <SponsorMarquee/>
+      <HeroGSAP />
+      <WhatIsSmec/>
 
       {/* Events Section */}
       <section className="py-20 relative">
@@ -101,7 +108,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

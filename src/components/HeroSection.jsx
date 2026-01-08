@@ -88,7 +88,7 @@ export function HeroSection() {
               </Link>
             </Button>
             <Button variant="outline" size="xl" asChild>
-              <Link to="/sign-up"> {/* Changed from /signup to match your backend logic usually */}
+              <Link to="/signup">
                 Register Now
               </Link>
             </Button>
@@ -98,7 +98,7 @@ export function HeroSection() {
           <div className="grid grid-cols-3 gap-8 pt-12 max-w-lg mx-auto">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="font-display text-3xl md:text-4xl font-bold text-primary glow-text">
+                <div className="font-display text-2xl md:text-4xl font-bold text-primary">
                   {stat.value}
                 </div>
                 <div className="text-sm text-muted-foreground font-body uppercase tracking-wider mt-1">

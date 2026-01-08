@@ -4,6 +4,7 @@ import { Menu, X, Gamepad2, LogOut, User, LayoutDashboard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/context/AuthContext';
+import SmecLogo from '@/assets/logo-bg-crop.png';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +17,10 @@ export function Navbar() {
 
   const navLinks = [
     { href: '/', label: 'Home' },
+    { href: '/events', label: 'Events' },
+    { href: '/about', label: 'About' },
+    { href: '/team', label: 'Our Team' },
+    { href: '/sponsors', label: 'Sponsors' },
     // Show appropriate Dashboard link
     ...(user ? [{ 
         href: isAdmin ? '/admin/dashboard' : '/dashboard', 
@@ -36,14 +41,19 @@ export function Navbar() {
           
           {/* --- LOGO (Cyan & White - Matches Lovable) --- */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="relative">
+            {/* <div className="relative">
               <Gamepad2 className="h-8 w-8 text-primary transition-all duration-300 group-hover:drop-shadow-[0_0_15px_hsl(180_100%_50%_/_0.8)]" />
               <div className="absolute inset-0 blur-lg bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <span className="font-display text-2xl font-bold tracking-wider">
               <span className="text-primary">SM</span>
               <span className="text-white">EC</span>
-            </span>
+            </span> */}
+            <img 
+              src={SmecLogo} 
+              alt="SMEC Logo" 
+              className="h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]" 
+            />
           </Link>
 
           {/* --- DESKTOP NAVIGATION --- */}
@@ -62,7 +72,7 @@ export function Navbar() {
                 {link.label}
                 {/* Cyan Glow Underline */}
                 {location.pathname === link.href && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary shadow-[0_0_10px_hsl(180_100%_50%)]" />
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary shadow-[0_0_15px_rgba(168,85,247,0.5)]" />
                 )}
               </Link>
             ))}
@@ -118,7 +128,7 @@ export function Navbar() {
                 
                 <Link to="/signup">
                     {/* Solid Cyan Button (Matches Lovable) */}
-                    <Button className="bg-primary hover:bg-cyan-400 text-black font-black tracking-widest hover:shadow-[0_0_20px_hsl(180_100%_50%_/_0.4)] transition-all">
+                    <Button className="bg-primary hover:bg-purple-400 text-black font-black tracking-widest hover:shadow-[0_0_20px_hsl(180_100%_50%_/_0.4)] transition-all">
                         REGISTER
                     </Button>
                 </Link>
@@ -182,7 +192,7 @@ export function Navbar() {
                         <Button variant="ghost" className="w-full text-zinc-300 border border-white/10" asChild onClick={() => setIsOpen(false)}>
                             <Link to="/login">Login</Link>
                         </Button>
-                        <Button className="w-full bg-primary text-black font-bold hover:bg-cyan-400" asChild onClick={() => setIsOpen(false)}>
+                        <Button className="w-full bg-primary text-black font-bold hover:bg-purple-400" asChild onClick={() => setIsOpen(false)}>
                             <Link to="/signup">Register Now</Link>
                         </Button>
                     </>

@@ -30,7 +30,8 @@ const buttonVariants = cva(
         
         // CYBER: Matches Lovable (Gradient + Shimmer Animation)
         cyber: 
-          "relative overflow-hidden bg-gradient-to-r from-primary via-accent to-secondary text-primary-foreground hover:shadow-[0_0_30px_hsl(180_100%_50%_/_0.6)] before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700",
+          // "relative overflow-hidden bg-gradient-to-r from-primary via-accent to-secondary text-primary-foreground hover:shadow-[0_0_30px_hsl(180_100%_50%_/_0.6)] before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700",
+          "relative overflow-hidden bg-gradient-to-r from-primary via-accent to-secondary text-primary-foreground  before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700",
         
         // GLOW: Extra variant from Lovable
         glow: 

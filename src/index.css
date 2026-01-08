@@ -78,7 +78,7 @@
     --popover: hsl(222 47% 8%);
     --popover-foreground: hsl(180 100% 95%);
 
-    --primary: hsl(180 100% 50%); /* Cyan Neon */
+    --primary: hsl(282 84% 50%); /* Cyan Neon */
     --primary-foreground: hsl(222 47% 6%);
 
     --secondary: hsl(320 100% 60%); /* Magenta Neon */
@@ -125,6 +125,7 @@
       radial-gradient(ellipse at 20% 0%, hsl(180 100% 50% / 0.05) 0%, transparent 50%),
       radial-gradient(ellipse at 80% 100%, hsl(320 100% 60% / 0.05) 0%, transparent 50%);
     min-height: 100vh;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
