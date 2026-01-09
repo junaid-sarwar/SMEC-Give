@@ -377,7 +377,7 @@ export default function Sponsors() {
       <Navbar />
       
       {/* Scroll Progress Bar */}
-      <motion.div style={{ scaleX }} className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-yellow-500 origin-left z-50" />
+      <motion.div style={{ scaleX }} className="fixed top-0 left-0 right-0 h-1 bg-linear-to-r from-cyan-400 via-purple-500 to-yellow-500 origin-left z-50" />
 
       {/* --- STOCK TICKER --- */}
       <div className="bg-primary/10 border-b border-primary/20 py-2 overflow-hidden flex whitespace-nowrap">
@@ -402,7 +402,7 @@ export default function Sponsors() {
                 </Badge>
                 <h1 className="font-display text-6xl md:text-8xl lg:text-9xl font-black mb-6 leading-none tracking-tight">
                     FUEL THE <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-400 to-yellow-600 animate-gradient-x">
+                    <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-500 via-pink-400 to-yellow-600 animate-gradient-x">
                         REVOLUTION
                     </span>
                 </h1>
@@ -415,7 +415,9 @@ export default function Sponsors() {
                     <Button onClick={handleDownload} className="h-16 px-10 text-xl font-bold bg-white text-black hover:bg-zinc-200 shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all hover:scale-105">
                         Download Proposal <Download className="ml-3 h-5 w-5" />
                     </Button>
-                    <Button variant="outline" className="h-16 px-10 text-xl border-white/20 hover:bg-white/10 text-white backdrop-blur-md">
+                    <Button 
+                     onClick={() => document.getElementById('tiers').scrollIntoView({ behavior: 'smooth' })}
+                    variant="outline" className="h-16 px-10 text-xl border-white/20 hover:bg-white/10 text-white backdrop-blur-md">
                         View Packages
                     </Button>
                 </div>
@@ -438,7 +440,7 @@ export default function Sponsors() {
                 </div>
             </div>
 
-            <div className="p-1 rounded-3xl bg-gradient-to-br from-white/10 to-transparent">
+            <div className="p-1 rounded-3xl bg-linear-to-br from-white/10 to-transparent">
                 <div className="bg-black/80 backdrop-blur-xl rounded-[22px] p-8 md:p-12 border border-white/5 shadow-2xl">
                     <div className="grid lg:grid-cols-2 gap-12">
                         <div className="h-[400px]">
@@ -488,14 +490,14 @@ export default function Sponsors() {
          
          <div className="container mx-auto px-4 relative z-10">
             <h2 className="font-display text-6xl font-black text-center mb-24 uppercase tracking-tight">
-                Choose Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-yellow-500">Legacy</span>
+                Choose Your <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-500 to-yellow-500">Legacy</span>
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {tiers.map((tier, index) => (
                     <div key={tier.name} className="group relative h-full">
                         {/* Hover Glow */}
-                        <div className={`absolute -inset-0.5 rounded-3xl bg-gradient-to-b ${tier.color} opacity-20 group-hover:opacity-100 blur transition duration-500`} />
+                        <div className={`absolute -inset-0.5 rounded-3xl bg-linear-to-b ${tier.color} opacity-20 group-hover:opacity-100 blur transition duration-500`} />
                         
                         <div className="relative h-full flex flex-col bg-zinc-950 rounded-[22px] p-8 border border-white/5 overflow-hidden">
                              {/* Top Badge */}
@@ -540,7 +542,7 @@ export default function Sponsors() {
       {/* --- FINAL CTA --- */}
       <section className="py-32 relative flex items-center justify-center overflow-hidden">
          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071')] bg-cover bg-center opacity-30" />
-         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
+         <div className="absolute inset-0 bg-linear-to-t from-black via-black/80 to-transparent" />
          
          <div className="relative z-10 text-center px-4">
              <h2 className="font-display text-5xl md:text-7xl font-black mb-8">READY TO DOMINATE?</h2>

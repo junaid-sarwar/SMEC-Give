@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import LegacySection from '@/components/about/LegacySection';
+import VisionMissionSection from '@/components/VisionMissionSection';
 // import LeadershipSection from '@/components/about/LeadershipSection';
 // import DirectorsSection from '@/components/about/DirectorsSection';
 // import GameLeadsSection from '@/components/about/GameLeadsSection';
@@ -13,6 +14,7 @@ const About = () => {
       <Navbar />
       <main className="pt-20">
         <LegacySection />
+        <VisionMissionSection/>
         {/* <LeadershipSection />
         <DirectorsSection />
         <GameLeadsSection /> */}

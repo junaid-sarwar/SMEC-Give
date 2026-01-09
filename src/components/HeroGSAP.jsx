@@ -83,7 +83,7 @@ export function HeroGSAP() {
           <h1 className="big-text font-display text-[15vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-primary to-purple-900 drop-shadow-[0_0_50px_rgba(168,85,247,0.5)] z-10">
             CONQUER
           </h1>
-          <p className="text-primary/70 font-mono tracking-[0.5em] mt-4 uppercase">
+          <p className="text-primary/70 font-mono tracking-[0.5em] mt-4 uppercase animate-pulse-slow">
             Dominate the Arena
           </p>
         </div>
@@ -94,7 +94,7 @@ export function HeroGSAP() {
           <div className="absolute inset-0 bg-yellow-500/10" />
           <div className="absolute inset-0 grid-pattern opacity-20" />
 
-          <h1 className="big-text font-display text-[12vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-yellow-700 drop-shadow-[0_0_30px_rgba(234,179,8,0.5)] z-10 leading-none">
+          <h1 className="big-text font-display text-[15vw] font-black text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-yellow-700 drop-shadow-[0_0_30px_rgba(234,179,8,0.5)] z-10 leading-none">
             CHAMPION
           </h1>
         </div>

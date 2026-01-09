@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from './context/AuthContext';
 import { Toaster } from "@/components/ui/sonner";
@@ -7,6 +7,8 @@ import { Toaster } from "@/components/ui/sonner";
 import Lenis from 'lenis'
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import Preloader from './components/Preloader'; // Import the new loader
 
 // Pages
 import Home from './pages/Home';
@@ -27,12 +29,20 @@ import Sponsors from './pages/Sponsors';
 gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // 1. Initialize Lenis
     const lenis = new Lenis({
         // You can add settings here if needed, e.g., duration: 1.2
     });
+
+    // 2. Control Lenis based on loading state
+    if (isLoading) {
+      lenis.stop(); // Stop scrolling while loading
+    } else {
+      lenis.start(); // Start scrolling when done
+    }
 
     // 2. Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
     lenis.on('scroll', ScrollTrigger.update);
@@ -52,10 +62,13 @@ const App = () => {
       gsap.ticker.remove(update);
       lenis.destroy();
     };
-  }, []);
+  }, [isLoading]);
 
   return (
     <AuthProvider>
+      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+      
+      <div className={isLoading ? "invisible h-screen overflow-hidden" : "visible"}>
       <Toaster position="top-center" richColors />
       
       {/* No <ReactLenis> wrapper needed. The useEffect handles it globally. */}
@@ -83,6 +96,7 @@ const App = () => {
           />
         </Routes>
       </BrowserRouter>
+      </div>
     </AuthProvider>
   )
 }
