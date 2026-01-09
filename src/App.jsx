@@ -8,10 +8,11 @@ import Lenis from 'lenis'
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import Preloader from './components/Preloader'; // Import the new loader
+import Preloader from './components/PreLoader'; // Import the new loader
 
 // Pages
 import Home from './pages/Home';
+
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
