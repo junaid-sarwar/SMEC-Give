@@ -3,6 +3,24 @@ import { Github, Twitter, Instagram, Linkedin, Facebook } from 'lucide-react';
 import SmecLogo from '@/assets/logo-bg.png'; // Import your logo
 
 export function Footer() {
+   const socialLinks = [
+    { 
+      Icon: Facebook, 
+      path: "https://facebook.com/ssuet.smec", 
+      label: "Facebook" 
+    },
+    { 
+      Icon: Instagram, 
+      path: "https://instagram.com/ssuet_smec", 
+      label: "Instagram" 
+    },
+    { 
+      Icon: Linkedin, 
+      path: "https://linkedin.com/company/ssuet-smec", 
+      label: "LinkedIn" 
+    },
+  ];
+
   return (
     <footer className="border-t border-white/10 bg-black/80 backdrop-blur-xl relative z-10">
       <div className="container mx-auto px-4 py-12">
@@ -33,8 +51,10 @@ export function Footer() {
               {[
                 { label: 'Home', path: '/' },
                 { label: 'Events', path: '/events' },
-                { label: 'Dashboard', path: '/dashboard' },
-                { label: 'About Team', path: '/about' },
+                { label: 'About Us', path: '/about' },
+                { label: 'Our Team', path: '/team' },
+                { label: 'Sponsors', path: '/sponsors' },
+                { label: 'Gallery', path: '/gallery' },
               ].map((item) => (
                 <li key={item.label}>
                   <Link
@@ -73,13 +93,16 @@ export function Footer() {
               Connect
             </h4>
             <div className="flex gap-3">
-              {[Facebook, Instagram, Linkedin, Github].map((Icon, i) => (
+              {socialLinks.map((social, i) => (
                 <a
                   key={i}
-                  href="#"
+                  href={social.path}
+                  target="_blank"           // Opens in new tab
+                  rel="noopener noreferrer" // Security best practice
+                  aria-label={social.label}
                   className="p-3 rounded-xl border border-white/10 bg-white/5 text-zinc-400 hover:text-white hover:bg-primary/20 hover:border-primary/50 transition-all duration-300 group"
                 >
-                  <Icon className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                  <social.Icon className="h-5 w-5 group-hover:scale-110 transition-transform" />
                 </a>
               ))}
             </div>
@@ -94,6 +117,9 @@ export function Footer() {
           <p className="text-sm text-white font-body">
             © 2026 SMEC. All rights reserved.
           </p>
+          <p className="text-[10px] text-zinc-500 font-mono uppercase tracking-wider">
+                Made with <span className="text-primary">&hearts;</span> by <span className="text-zinc-300 hover:text-primary transition-colors cursor-default">Junaid Sarwar & Shafay Zaidi</span>
+            </p>
           <div className="flex gap-6 text-xs text-zinc-600 font-mono uppercase tracking-wider">
             <span>Privacy Policy</span>
             <span>Terms of Service</span>

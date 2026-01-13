@@ -222,6 +222,7 @@ export function Navbar() {
     { href: '/about', label: 'About' },
     { href: '/team', label: 'Our Team' },
     { href: '/sponsors', label: 'Sponsors' },
+    { href: '/gallery', label: 'Gallery' },
   ];
 
   return (

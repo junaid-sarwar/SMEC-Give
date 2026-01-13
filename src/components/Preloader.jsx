@@ -60,7 +60,7 @@ const Preloader = ({ onComplete }) => {
     // 6. LIQUID FILL (Filling like water from bottom to top)
     tl.to(fillRef.current, {
       clipPath: "inset(0% 0% 0% 0%)",
-      duration: 2.5, // Nice slow filling speed
+      duration: 2, // Nice slow filling speed
       ease: "power2.inOut"
     });
 

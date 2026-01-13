@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Navbar } from '@/components/Navbar';
 import LegacySection from '@/components/about/LegacySection';
 import VisionMissionSection from '@/components/VisionMissionSection';
+import { Footer } from '@/components/Footer';
 // import LeadershipSection from '@/components/about/LeadershipSection';
 // import DirectorsSection from '@/components/about/DirectorsSection';
 // import GameLeadsSection from '@/components/about/GameLeadsSection';
@@ -19,6 +20,7 @@ const About = () => {
         <DirectorsSection />
         <GameLeadsSection /> */}
       </main>
+        <Footer/>
     </div>
   );
 };

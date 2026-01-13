@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Trophy, Timer } from 'lucide-react';
+import { ArrowRight, Trophy, Timer, Lock, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SmecLogo from '@/assets/logo-bg-crop2.png'; // Ensure this path is correct
 
 export default function HeroSection2() {
   // Simple Countdown Logic
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [isExpired, setIsExpired] = useState(false);
 
   useEffect(() => {
     // Set target date (e.g., Dec 29, 2025)
@@ -16,8 +17,10 @@ export default function HeroSection2() {
       const now = new Date().getTime();
       const distance = targetDate - now;
 
-      if (distance < 0) {
+      if (distance <= 0) {
         clearInterval(interval);
+        setIsExpired(true);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       } else {
         setTimeLeft({
             days: Math.floor(distance / (1000 * 60 * 60 * 24)),
@@ -73,51 +76,83 @@ export default function HeroSection2() {
                 </p>
             </div>
 
-            {/* COUNTDOWN */}
-            <div className="py-6 animate-in fade-in duration-1000 delay-300">
-                <div className="flex justify lg:justify-start gap-4 md:gap-8 font-display text-white">
-                    <div className="text-center">
-                        <div className="text-3xl md:text-5xl font-bold">{timeLeft.days}</div>
-                        <div className="text-[10px] uppercase tracking-widest text-primary">Days</div>
+             {/* COUNTDOWN / CLOSED SECTION */}
+            <div className="min-h-[100px] flex items-center justify-center lg:justify-start transition-all duration-500">
+              {isExpired ? (
+                /* --- THE CLOSED STATE (Flyer Inspired) --- */
+                <div className="group relative flex flex-col items-center lg:items-start gap-2 animate-in fade-in zoom-in-95 duration-700">
+                  <div className="flex items-center gap-3 px-6 py-4 rounded-xl bg-zinc-900/80 border-2 border-red-500/30 backdrop-blur-md shadow-[0_0_30px_rgba(239,68,68,0.15)]">
+                    <div className="relative">
+                       <Lock className="w-8 h-8 text-red-500 animate-pulse" />
+                       <div className="absolute inset-0 blur-md bg-red-500/20 animate-pulse" />
                     </div>
-                    <div className="text-3xl md:text-5xl font-bold text-yellow-500">:</div>
-                    <div className="text-center">
-                        <div className="text-3xl md:text-5xl font-bold">{timeLeft.hours}</div>
-                        <div className="text-[10px] uppercase tracking-widest text-primary">Hours</div>
+                    <div className="flex flex-col">
+                      <span className="font-display text-2xl md:text-3xl font-black italic tracking-tighter text-white uppercase leading-none">
+                        Registrations <span className="text-red-500">Closed</span>
+                      </span>
+                      <span className="text-[10px] font-bold text-zinc-500 tracking-widest uppercase mt-1">
+                        Arena access restricted to registered users
+                      </span>
                     </div>
-                    <div className="text-3xl md:text-5xl font-bold text-yellow-500">:</div>
-                    <div className="text-center">
-                        <div className="text-3xl md:text-5xl font-bold">{timeLeft.minutes}</div>
-                        <div className="text-[10px] uppercase tracking-widest text-primary">Mins</div>
-                    </div>
-                    <div className="text-3xl md:text-5xl font-bold text-yellow-500">:</div>
-                    <div className="text-center">
-                        <div className="text-3xl md:text-5xl font-bold">{timeLeft.seconds}</div>
-                        <div className="text-[10px] uppercase tracking-widest text-primary">Secs</div>
-                    </div>
+                  </div>
                 </div>
+              ) : (
+                /* --- THE ACTIVE TIMER --- */
+                <div className="flex gap-4 md:gap-8 font-display text-white">
+                  {[
+                    { label: 'Days', val: timeLeft.days },
+                    { label: 'Hours', val: timeLeft.hours },
+                    { label: 'Mins', val: timeLeft.minutes },
+                    { label: 'Secs', val: timeLeft.seconds }
+                  ].map((unit, idx) => (
+                    <div key={unit.label} className="flex items-center gap-4 md:gap-8">
+                      <div className="text-center">
+                        <div className="text-4xl md:text-6xl font-black tracking-tighter">{unit.val}</div>
+                        <div className="text-[10px] uppercase tracking-widest text-primary font-bold">{unit.label}</div>
+                      </div>
+                      {idx !== 3 && <div className="text-3xl md:text-5xl font-bold text-yellow-500 self-start mt-1">:</div>}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* CTA BUTTONS */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4 animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-500">
-                <div className='flex flex-col'>
-                    <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2 text-center lg:text-left">Ready to Compete?</p>
-                    <div className="flex gap-4 flex-col md:flex-row">
-                        <Button variant="cyber" size="xl" asChild className="h-14 px-8 text-lg shadow-[0_0_40px_-10px_hsl(282_84%_50%_0.5)]">
-                            <Link to="/signup">
-                                Register Now <ArrowRight className="ml-2 w-5 h-5"/>
-                            </Link>
-                        </Button>
-                        <Button variant="outline" size="xl" asChild className="h-14 px-8 text-lg border-primary/30 hover:bg-primary/10">
-                            <Link to="/events">
-                                View Events
-                            </Link>
-                        </Button>
-                    </div>
-                </div>
-            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+              <div className='flex flex-col gap-3'>
+                <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-[0.3em] text-center lg:text-left">
+                  {isExpired ? "Phase One: Complete" : "Join the Elite"}
+                </p>
+                <div className="flex gap-4 flex-col md:flex-row items-center">
+                  <Button 
+                    variant={isExpired ? "secondary" : "cyber"} 
+                    size="xl" 
+                    disabled={isExpired}
+                    className={cn(
+                        "h-14 px-10 text-lg font-black tracking-widest transition-all duration-500",
+                        isExpired 
+                          ? "bg-zinc-800 text-zinc-500 border-zinc-700 cursor-not-allowed opacity-80" 
+                          : "shadow-[0_0_50px_-10px_hsl(282_84%_50%_0.6)]"
+                    )}
+                    asChild={!isExpired}
+                  >
+                    {isExpired ? (
+                      <span className="flex items-center gap-2">ENTRY CLOSED</span>
+                    ) : (
+                      <Link to="/signup">
+                        REGISTER NOW <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"/>
+                      </Link>
+                    )}
+                  </Button>
 
+                  <Button variant="outline" size="xl" asChild className="h-14 px-10 text-lg border-white/10 hover:bg-white/5 font-bold">
+                    <Link to="/events">VIEW ARENAS</Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
+
 
           {/* --- RIGHT SIDE: BIG 3D LOGO --- */}
           <div className="relative flex justify-center lg:justify-end animate-in zoom-in-50 duration-1000 delay-200">
@@ -146,4 +181,9 @@ export default function HeroSection2() {
       </div>
     </section>
   );
+}
+
+// Helper for conditional classes
+function cn(...classes) {
+  return classes.filter(Boolean).join(' ');
 }

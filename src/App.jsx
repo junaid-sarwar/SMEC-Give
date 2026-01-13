@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AuthProvider } from './context/AuthContext';
 import { Toaster } from "@/components/ui/sonner";
 
@@ -25,12 +25,14 @@ import Events from './pages/Events';
 import About from './pages/About';
 import OurTeam from './pages/OurTeam';
 import Sponsors from './pages/Sponsors';
+import Gallery from './pages/Gallery';
 
 // Register GSAP Plugin outside component
 gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation(); 
 
   useEffect(() => {
     // 1. Initialize Lenis
@@ -44,6 +46,9 @@ const App = () => {
     } else {
       lenis.start(); // Start scrolling when done
     }
+// --- INTEGRATED SCROLL RESET ---
+    // This tells Lenis to jump to the top (duration: 0) every time the path changes
+    lenis.scrollTo(0, { immediate: true }); 
 
     // 2. Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
     lenis.on('scroll', ScrollTrigger.update);
@@ -63,7 +68,7 @@ const App = () => {
       gsap.ticker.remove(update);
       lenis.destroy();
     };
-  }, [isLoading]);
+  }, [isLoading, location.pathname]);
 
   return (
     <AuthProvider>
@@ -73,7 +78,7 @@ const App = () => {
       <Toaster position="top-center" richColors />
       
       {/* No <ReactLenis> wrapper needed. The useEffect handles it globally. */}
-      <BrowserRouter>
+      
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path="*" element={<NotFound />} />
@@ -87,6 +92,7 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/about" element={<About />} />
           <Route path="/sponsors" element={<Sponsors />} />
+          <Route path="/gallery" element={<Gallery />} />
 
           <Route path="/admin/dashboard" 
             element={
@@ -96,7 +102,7 @@ const App = () => {
             } 
           />
         </Routes>
-      </BrowserRouter>
+      
       </div>
     </AuthProvider>
   )
