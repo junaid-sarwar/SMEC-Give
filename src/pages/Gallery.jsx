@@ -8,16 +8,16 @@ import { EffectCards, Autoplay, Navigation } from 'swiper/modules';
 import { ChevronLeft, ChevronRight, Camera, History } from 'lucide-react';
 
 // Assets
-import eventpic1 from '@/assets/SMEC-EVENT-PICS/pic1.jpg'
-import eventpic2 from '@/assets/SMEC-EVENT-PICS/pic2.jpg'
-import eventpic3 from '@/assets/SMEC-EVENT-PICS/pic3.jpg'
-import eventpic4 from '@/assets/SMEC-EVENT-PICS/pic4.jpg'
-import eventpic5 from '@/assets/SMEC-EVENT-PICS/pic5.jpg'
-import eventpic6 from '@/assets/SMEC-EVENT-PICS/pic6.jpg'
-import eventpic7 from '@/assets/SMEC-EVENT-PICS/pic7.jpg'
-import eventpic8 from '@/assets/SMEC-EVENT-PICS/pic8.jpg'
-import eventpic20 from '@/assets/SMEC-EVENT-PICS/pic20.jpg'
-import eventpic21 from '@/assets/SMEC-EVENT-PICS/pic21.jpg'
+import eventpic1 from '@/assets/SMEC-EVENT-PICS/pic1.JPG'
+import eventpic2 from '@/assets/SMEC-EVENT-PICS/pic2.JPG'
+import eventpic3 from '@/assets/SMEC-EVENT-PICS/pic3.JPG'
+import eventpic4 from '@/assets/SMEC-EVENT-PICS/pic4.JPG'
+import eventpic5 from '@/assets/SMEC-EVENT-PICS/pic5.JPG'
+import eventpic6 from '@/assets/SMEC-EVENT-PICS/pic6.JPG'
+import eventpic7 from '@/assets/SMEC-EVENT-PICS/pic7.JPG'
+import eventpic8 from '@/assets/SMEC-EVENT-PICS/pic8.JPG'
+import eventpic20 from '@/assets/SMEC-EVENT-PICS/pic20.JPG'
+import eventpic21 from '@/assets/SMEC-EVENT-PICS/pic21.JPG'
 
 import 'swiper/css';
 import 'swiper/css/effect-cards';
