@@ -44,6 +44,7 @@ export const coreTeam = {
 
   // Directors Layer
   directors: [
+    { name: "Hassan Ahmed Abbasi", role: "Director Management", image: dirGeeks },
     { name: "Izma Sabir", role: "Director Marketing", image: dirMarketing },
     { name: "Zayan Ahmed Khan", role: "Director Graphics", image: dirGraphics },
     { name: "Uzair Siddiqui", role: "Director Sales", image: dirSales1 },
@@ -51,7 +52,7 @@ export const coreTeam = {
     { name: "Syed Saaim Mustafa", role: "Head of Ambassadors", image: headAmb },
     { name: "M. Talha Majeed", role: "Director E-Games Solo", image: dirEgamesSolo },
     { name: "Rehan Khalil Ahmed", role: "Director E-Games Multi", image: dirEgamesMulti },
-    { name: "Saad Rizvi", role: "Director Geeks", image: dirGeeks },
+    // { name: "Saad Rizvi", role: "Director Geeks", image: dirGeeks },
     { name: "Areej Fatima", role: "Director Geeks", image: dirGeeks2 }, // Add separate image if diff
     { name: "M. Ammar Qureshi", role: "Director General Games", image: dirGeneral },
     { name: "Afra Mamji", role: "Director General Games", image: dirGeneral2 }, // Add separate image if diff
